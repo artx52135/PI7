@@ -1,29 +1,35 @@
-def is_prime(num):
-    if num < 2:
-        return False
-    for i in range(2, int(num**0.5) + 1):
-        if num % i == 0:
-            return False
-    return True
+def arabic_to_roman(number):
+    if not 1 <= number <= 3999:
+        raise ValueError("Число должно быть в диапазоне от 1 до 3999 включительно")
 
-def get_nth_prime(n):
-    if n <= 0:
-        raise ValueError("n>0")
-    
-    count = 0
-    number = 1
+    roman_numerals = {
+        1000: 'M',
+        900: 'CM',
+        500: 'D',
+        400: 'CD',
+        100: 'C',
+        90: 'XC',
+        50: 'L',
+        40: 'XL',
+        10: 'X',
+        9: 'IX',
+        5: 'V',
+        4: 'IV',
+        1: 'I'
+    }
 
-    while count < n:
-        number += 1
-        if is_prime(number):
-            count += 1
+    roman_numeral = ''
+    for value, numeral in roman_numerals.items():
+        while number >= value:
+            roman_numeral += numeral
+            number -= value
 
-    return number
+    return roman_numeral
 
-def main():
-        n = 5
-        prime = get_nth_prime(n)
-        print(f"Value: {prime}")
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    try:
+        # arabic_number = int(input("Введите арабское число (от 1 до 3999): "))
+        roman_number = arabic_to_roman(55)
+        print(f"Римская запись числа {55}: {roman_number}")
+    except ValueError as e:
+        print(f"Ошибка: {e}")
