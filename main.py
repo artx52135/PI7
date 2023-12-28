@@ -7,7 +7,7 @@ def is_prime(num):
     return True
 
 def get_nth_prime(n):
-    if n <= 0
+    if n <= 0:
         raise ValueError("n>0")
     
     count = 0
