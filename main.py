@@ -22,7 +22,7 @@ def get_nth_prime(n):
 
 def main():
     try:
-        n = int(input("n: "))
+        n = int(input())
         prime = get_nth_prime(n)
         print(f"Value: {prime}")
     except ValueError as e:
